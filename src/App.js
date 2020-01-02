@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import './App.css';
-import Todos from './components/Todos';
+import React, { Component } from "react";
+import "./App.css";
+import Todos from "./components/Todos";
 
 class App extends Component {
   state = {
@@ -8,25 +8,36 @@ class App extends Component {
       {
         id: 1,
         title: "this the task 1",
-        status: 0,
+        status: true
       },
       {
         id: 3,
         title: "this the task 3",
-        status: 0,
+        status: false
       },
       {
         id: 2,
         title: "this the task 2",
-        status: 0,
-      },
+        status: false
+      }
     ]
-  }
+  };
+  updateTodo = (id) => {
+    this.setState({
+      todos:this.state.todos.map(todo=>{
+        if(todo.id===id){
+          todo.status=!todo.status;
+        }
+        return todo;
+    })
+  })
+  console.log(id);
+
+  };
   render() {
     return (
-      <div className="App" >
-
-        <Todos todos={this.state.todos}></Todos>
+      <div className="App">
+        <Todos todos={this.state.todos} updateTodo={this.updateTodo}></Todos>
 
       </div>
     );
