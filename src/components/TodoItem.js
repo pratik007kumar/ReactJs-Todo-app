@@ -18,7 +18,17 @@ export default class TodoItem extends Component {
           onChange={this.props.updateTodo.bind(this, id)}
         />{" "}
         {title}{" "}
+         <button
+         onClick={this.props.deleteTodo.bind(this, id)} style={btn}
+         >x</button>
       </div>
     );
   }
+}
+const btn={
+  background:"#ff0000",
+  color:'#fff',
+  borderRadius:'50px',
+  padding:"5px 10px",
+  border:'none'
 }
